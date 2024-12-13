@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $primaryFont;
+    font-size: 62.5%;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    empty-cells: show;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+p,
+a {
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 70vw;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 90vw;
+    }
+}
