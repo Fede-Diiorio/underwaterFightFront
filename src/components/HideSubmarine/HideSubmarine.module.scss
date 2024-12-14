@@ -1,0 +1,13 @@
+.button {
+    margin: 2rem auto;
+    font-size: 1.2rem;
+    background-color: $lightPrimaryColor;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        background-color: $primaryColor;
+    }
+}
