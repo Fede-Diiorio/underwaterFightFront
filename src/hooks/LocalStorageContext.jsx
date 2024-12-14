@@ -1,10 +1,9 @@
 import { createContext, useContext } from "react";
 
 const LocalStorageContext = createContext({
-    saveCartToLocalStorage: () => { },
-    getCartFromLocalStorage: () => { },
-    removeProductFromLocalStorage: () => { },
-    clearCartFormLocalStorage: () => { }
+    saveSubmarineToLocalStorage: () => { },
+    getSubmarineFromLocalStorage: () => { },
+    clearSubmarineFromLocalStorage: () => { }
 })
 
 export const LocalStorageProvider = ({ children }) => {
@@ -20,6 +19,7 @@ export const LocalStorageProvider = ({ children }) => {
 
     const getSubmarineFromLocalStorage = () => {
         const submarine = JSON.parse(localStorage.getItem('submarine')) || [];
+        console.log(submarine);
         return submarine;
     }
 

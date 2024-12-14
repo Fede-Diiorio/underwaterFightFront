@@ -2,6 +2,7 @@ import './App.css'
 import { LocalStorageProvider } from './hooks/LocalStorageContext';
 import Header from './components/Header/Header'
 import HideSubmarine from './components/HideSubmarine/HideSubmarine'
+import ShootingBoard from './components/ShootingBoard/ShootingBoard';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <LocalStorageProvider>
         <Header />
         <HideSubmarine />
+        <ShootingBoard />
       </LocalStorageProvider>
     </main>
   )
