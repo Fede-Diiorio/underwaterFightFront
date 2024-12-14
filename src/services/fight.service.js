@@ -25,13 +25,13 @@ export const shootHandler = (width, height, deep, submarine) => {
         console.log("No hay submarinos cerca");
     }
 
+    console.log(submarine);
+
     validateCoordinate(width);
     validateCoordinate(height);
     validateCoordinate(deep);
 
     if (width === submarine.coordinates.width && height === submarine.coordinates.height && deep === submarine.coordinates.deep) {
-        submarine.counter = null;
-        submarine.coordinates = null;
         console.log("¡VICTORIA, ALCANZAMOS LA VICTORIA!");
     }
 

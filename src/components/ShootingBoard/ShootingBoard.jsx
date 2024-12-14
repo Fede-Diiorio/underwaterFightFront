@@ -8,7 +8,7 @@ const ShootingBoard = () => {
     const [deep, setDeep] = useState(0);
     const [height, setHeight] = useState(0);
     const [width, setWidth] = useState(0);
-    const { getSubmarineFromLocalStorage } = useLocalStorage();
+    const { getSubmarineFromLocalStorage, saveSubmarineToLocalStorage, clearSubmarineFromLocalStorage } = useLocalStorage();
 
     const handleHeightChange = (e) => {
         setHeight(Number(e.target.value));
@@ -25,7 +25,9 @@ const ShootingBoard = () => {
 
     const handleShoot = (width, height, deep) => {
         const submarine = getSubmarineFromLocalStorage();
-        shootHandler(width, height, deep, submarine[0]);
+        // console.log(submarine);
+        shootHandler(width, height, deep, submarine);
+        saveSubmarineToLocalStorage(submarine.coordinates, submarine.counter);
     }
 
     return (

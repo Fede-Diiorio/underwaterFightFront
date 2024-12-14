@@ -4,12 +4,11 @@ import { useLocalStorage } from '../../hooks/LocalStorageContext';
 
 const HideSubmarine = () => {
 
-    const { saveSubmarineToLocalStorage, clearSubmarineFromLocalStorage } = useLocalStorage();
+    const { saveSubmarineToLocalStorage } = useLocalStorage();
 
     const hideHander = () => {
         const submarine = generateRandomCoordinates();
-        clearSubmarineFromLocalStorage();
-        saveSubmarineToLocalStorage(submarine);
+        saveSubmarineToLocalStorage(submarine.coordinates, submarine.counter);
     }
 
     return (
