@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useFightService } from '../hooks/FightServiceContext';
+import { useFightService } from '../../hooks/FightServiceContext';
+import Sonar from '../Sonar/Sonar';
 
 const GameComponent = () => {
     const fightService = useFightService();
@@ -7,12 +8,14 @@ const GameComponent = () => {
     const [input, setInput] = useState({ width: 0, height: 0, deep: 0 }); // Valores ingresados por el usuario
     const [message, setMessage] = useState(''); // Mensaje general
     const [ranges, setRanges] = useState({ width: '', height: '', deep: '' }); // Rangos devueltos por el backend
+    const [enemySub, setEnemySub] = useState({ width: '', height: '', deep: '' });
 
     const handleGenerate = () => {
         const generated = fightService.generateRandomCoordinates();
         setCoordinates(generated);
         setMessage('¡Submarino detectado! Hora del combate.');
         setRanges({ width: '', height: '', deep: '' }); // Resetear rangos
+        setEnemySub(null);
     };
 
     const handleCalculate = () => {
@@ -28,6 +31,7 @@ const GameComponent = () => {
                 setRanges({ width: '', height: '', deep: '' }); // Si gana, no hay rangos que mostrar
             } else {
                 setMessage(result.info);
+                setEnemySub(result.enemySub);
                 setRanges({
                     width: result.width,
                     height: result.height,
@@ -42,8 +46,7 @@ const GameComponent = () => {
     return (
         <div className='container'>
             <h1>Batalla Submarina</h1>
-            <button onClick={handleGenerate}>Esconder Submarino</button>
-            {coordinates && <p>Coordenadas generadas: {JSON.stringify(coordinates)}</p>}
+            <button onClick={handleGenerate}>Activar Sonar</button>
             <div>
                 <input
                     type="number"
@@ -66,12 +69,7 @@ const GameComponent = () => {
                 <button onClick={handleCalculate}>Disparar</button>
             </div>
             {message && <p>{message}</p>}
-            <div>
-                <h3>Sonar:</h3>
-                <p>Width: {ranges.width}</p>
-                <p>Height: {ranges.height}</p>
-                <p>Deep: {ranges.deep}</p>
-            </div>
+            <Sonar ranges={ranges} enemySub={enemySub} />
         </div>
     );
 };

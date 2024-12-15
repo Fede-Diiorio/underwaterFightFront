@@ -42,7 +42,7 @@ export default class FightService {
     }
 
     #getRange(dimension) {
-        return `${this.min[dimension]} < número < ${this.max[dimension]}`;
+        return `${this.min[dimension]} < X < ${this.max[dimension]}`;
     }
 
     /**
@@ -95,15 +95,15 @@ export default class FightService {
         if (width === targetWidth && height === targetHeight && deep === targetDeep) {
             this.#counter = null;
             this.#coordinates = null;
-            return "¡VICTORIA, ALCANZAMOS LA VICTORIA!";
+            return "Enemigo neutralizado";
         }
 
         this.#counter--;
 
         if (this.#counter < 1) {
             const response = {
-                coordinates: this.#coordinates,
-                message: "Te has quedado sin disparos. Estás muerto."
+                enemySub: this.#coordinates,
+                info: "Te has quedado sin disparos. Hemos sido derrotados."
             };
 
             this.#reset();
