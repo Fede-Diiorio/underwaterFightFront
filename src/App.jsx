@@ -1,20 +1,17 @@
 import './App.css'
+import { FightServiceProvider } from './hooks/FightServiceContext';
 import { LocalStorageProvider } from './hooks/LocalStorageContext';
-import Header from './components/Header/Header'
-import HideSubmarine from './components/HideSubmarine/HideSubmarine'
-import ShootingBoard from './components/ShootingBoard/ShootingBoard';
-import Sonar from './components/Sonar/Sonar';
+import GameComponent from './components/GameComponent';
 
 function App() {
 
   return (
     <main>
-      <LocalStorageProvider>
-        <Header />
-        <HideSubmarine />
-        <ShootingBoard />
-        <Sonar />
-      </LocalStorageProvider>
+      <FightServiceProvider>
+        <LocalStorageProvider>
+          <GameComponent />
+        </LocalStorageProvider>
+      </FightServiceProvider>
     </main>
   )
 }
