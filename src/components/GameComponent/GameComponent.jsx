@@ -8,7 +8,7 @@ const GameComponent = () => {
     const [input, setInput] = useState({ width: 0, height: 0, deep: 0 }); // Valores ingresados por el usuario
     const [message, setMessage] = useState(''); // Mensaje general
     const [ranges, setRanges] = useState({ width: '', height: '', deep: '' }); // Rangos devueltos por el backend
-    const [enemySub, setEnemySub] = useState({ width: '', height: '', deep: '' });
+    const [enemySub, setEnemySub] = useState(null);
 
     const handleGenerate = () => {
         const generated = fightService.generateRandomCoordinates();

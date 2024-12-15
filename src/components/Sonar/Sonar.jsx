@@ -1,7 +1,7 @@
 const Sonar = ({ enemySub, ranges }) => {
     if (enemySub) {
         return (
-            <div className="container">
+            <div>
                 <h3>El enemigo disparó desde: </h3>
                 <p>Deep: {enemySub.deep}</p>
                 <p>Width: {enemySub.width}</p>
