@@ -22,10 +22,10 @@ const validateCoordinate = (coordinate) => {
 export const shootHandler = (width, height, deep, submarine) => {
 
     if (!submarine) {
-        console.log("No hay submarinos cerca");
+        console.error("No hay submarinos cerca");
     }
 
-    console.log(submarine);
+    console.log(submarine.counter);
 
     validateCoordinate(width);
     validateCoordinate(height);
@@ -44,7 +44,7 @@ export const shootHandler = (width, height, deep, submarine) => {
         };
 
 
-        console.log(response);
+        console.error(response);
     }
 
     const response = {

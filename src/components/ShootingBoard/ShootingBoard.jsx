@@ -25,7 +25,6 @@ const ShootingBoard = () => {
 
     const handleShoot = (width, height, deep) => {
         const submarine = getSubmarineFromLocalStorage();
-        // console.log(submarine);
         shootHandler(width, height, deep, submarine);
         saveSubmarineToLocalStorage(submarine.coordinates, submarine.counter);
     }
