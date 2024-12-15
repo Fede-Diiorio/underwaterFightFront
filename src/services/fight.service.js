@@ -25,12 +25,12 @@ export default class FightService {
 
         this.#counter = 7;
 
-        return this.#coordinates;
+        return "¡ATENCIÓN!";
     }
 
     getCoordinates() {
         if (!this.#coordinates) {
-            throw new Error("Las coordenadas no han sido generadas aún.");
+            throw new Error("No hay submarinos rondando el área.");
         }
         return this.#coordinates;
     }
@@ -83,7 +83,7 @@ export default class FightService {
 
     calculateCoordinates(width, height, deep) {
         if (!this.#coordinates) {
-            throw new Error("Debe generar las coordenadas primero.");
+            throw new Error("No hay submarinos cerca");
         }
 
         this.#validateCoordinate(width);

@@ -3,14 +3,16 @@ import { useFightService } from '../hooks/FightServiceContext';
 
 const GameComponent = () => {
     const fightService = useFightService();
-    const [coordinates, setCoordinates] = useState(null);
-    const [input, setInput] = useState({ width: 0, height: 0, deep: 0 });
-    const [message, setMessage] = useState('');
+    const [coordinates, setCoordinates] = useState(null); // Coordenadas generadas
+    const [input, setInput] = useState({ width: 0, height: 0, deep: 0 }); // Valores ingresados por el usuario
+    const [message, setMessage] = useState(''); // Mensaje general
+    const [ranges, setRanges] = useState({ width: '', height: '', deep: '' }); // Rangos devueltos por el backend
 
     const handleGenerate = () => {
         const generated = fightService.generateRandomCoordinates();
         setCoordinates(generated);
-        setMessage('¡Nuevas coordenadas generadas! Adivina.');
+        setMessage('¡Submarino detectado! Hora del combate.');
+        setRanges({ width: '', height: '', deep: '' }); // Resetear rangos
     };
 
     const handleCalculate = () => {
@@ -20,10 +22,17 @@ const GameComponent = () => {
                 input.height,
                 input.deep
             );
+
             if (typeof result === 'string') {
                 setMessage(result);
+                setRanges({ width: '', height: '', deep: '' }); // Si gana, no hay rangos que mostrar
             } else {
                 setMessage(result.info);
+                setRanges({
+                    width: result.width,
+                    height: result.height,
+                    deep: result.deep
+                });
             }
         } catch (error) {
             setMessage(error.message);
@@ -31,9 +40,9 @@ const GameComponent = () => {
     };
 
     return (
-        <div>
-            <h1>Juego de Coordenadas</h1>
-            <button onClick={handleGenerate}>Generar Coordenadas</button>
+        <div className='container'>
+            <h1>Batalla Submarina</h1>
+            <button onClick={handleGenerate}>Esconder Submarino</button>
             {coordinates && <p>Coordenadas generadas: {JSON.stringify(coordinates)}</p>}
             <div>
                 <input
@@ -54,9 +63,15 @@ const GameComponent = () => {
                     value={input.deep}
                     onChange={(e) => setInput({ ...input, deep: Number(e.target.value) })}
                 />
-                <button onClick={handleCalculate}>Calcular</button>
+                <button onClick={handleCalculate}>Disparar</button>
             </div>
             {message && <p>{message}</p>}
+            <div>
+                <h3>Sonar:</h3>
+                <p>Width: {ranges.width}</p>
+                <p>Height: {ranges.height}</p>
+                <p>Deep: {ranges.deep}</p>
+            </div>
         </div>
     );
 };
