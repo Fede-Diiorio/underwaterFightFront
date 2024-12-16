@@ -9,17 +9,16 @@ const Sonar = ({ enemySub, ranges }) => {
             </div>
         );
     }
-    return (
-        <div>
-            <h3>Sonar:</h3>
-            <p>Width: {ranges.width}</p>
-            <p>Height: {ranges.height}</p>
-            <p>Deep: {ranges.deep}</p>
-        </div>
-    )
-
-
-
+    if (ranges) {
+        return (
+            <div>
+                <h3>Sonar:</h3>
+                <p>Width: {ranges.width}</p>
+                <p>Height: {ranges.height}</p>
+                <p>Deep: {ranges.deep}</p>
+            </div>
+        )
+    }
 };
 
 export default Sonar;

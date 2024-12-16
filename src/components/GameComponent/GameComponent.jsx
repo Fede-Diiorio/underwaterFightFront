@@ -7,7 +7,7 @@ const GameComponent = () => {
     const [coordinates, setCoordinates] = useState(null); // Coordenadas generadas
     const [input, setInput] = useState({ width: 0, height: 0, deep: 0 }); // Valores ingresados por el usuario
     const [message, setMessage] = useState(''); // Mensaje general
-    const [ranges, setRanges] = useState({ width: '', height: '', deep: '' }); // Rangos devueltos por el backend
+    const [ranges, setRanges] = useState(null); // Rangos devueltos por el backend
     const [enemySub, setEnemySub] = useState(null);
 
     const handleGenerate = () => {
@@ -20,6 +20,8 @@ const GameComponent = () => {
 
     const handleCalculate = () => {
         try {
+            setEnemySub(null);
+            setRanges(null);
             const result = fightService.calculateCoordinates(
                 input.width,
                 input.height,
@@ -28,7 +30,7 @@ const GameComponent = () => {
 
             if (typeof result === 'string') {
                 setMessage(result);
-                setRanges({ width: '', height: '', deep: '' }); // Si gana, no hay rangos que mostrar
+                setRanges(null); // Si gana, no hay rangos que mostrar
             } else {
                 setMessage(result.info);
                 setEnemySub(result.enemySub);
