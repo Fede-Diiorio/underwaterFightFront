@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFightService } from '../../hooks/FightServiceContext';
 import Sonar from '../Sonar/Sonar';
 import Header from '../Header/Header';
+import SonarButton from '../SonarButton/SonarButton';
 
 const GameComponent = () => {
     const fightService = useFightService();
@@ -49,8 +50,9 @@ const GameComponent = () => {
     return (
         <div>
             <Header />
+            <SonarButton handleGenerate={handleGenerate} />
 
-            <button onClick={handleGenerate}>Activar Sonar</button>
+            {/* <button onClick={handleGenerate}>Activar Sonar</button> */}
             <div>
                 <input
                     type="number"

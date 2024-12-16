@@ -1,0 +1,16 @@
+.button {
+    background-color: $lightPrimaryColor;
+    border: 1px solid $black;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    transition: all .3s ease-in-out;
+    margin: 1rem auto;
+
+    &:hover {
+        background-color: $primaryColor;
+        color: $white;
+        cursor: pointer;
+    }
+
+}
