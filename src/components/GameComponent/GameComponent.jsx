@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFightService } from '../../hooks/FightServiceContext';
 import Sonar from '../Sonar/Sonar';
+import Header from '../Header/Header';
 
 const GameComponent = () => {
     const fightService = useFightService();
@@ -46,8 +47,9 @@ const GameComponent = () => {
     };
 
     return (
-        <div className='container'>
-            <h1>Batalla Submarina</h1>
+        <div>
+            <Header />
+
             <button onClick={handleGenerate}>Activar Sonar</button>
             <div>
                 <input
